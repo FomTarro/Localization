@@ -16,15 +16,24 @@ There are two basic sections to this library:
 
 ### The First Section: The Editor Plugin
 
-* CSVPuller
-The Editor script (in the Editor folder) is some small menu extenions for Unity that let you input a Google Sheets sharing URL, select a text asset in your Assets folder, and then pull the content of the Sheet into the asset with a single click.
+* <b>CSVPuller</b>: A small menu extenion for Unity that lets you input a Google Sheets sharing URL, select a text asset in your Assets folder, and then pull the content of the Sheet into the asset with a single click.
 
 ### The Second Section: The Component Scripts
 
-* LocalizationManager
-* LocalizedText
+* <b>LocalizationManager</b>: The heart and soul of the localization. Almost all of its internals are carefully documented, but this is essentially a singleton that houses the dictionaries that are your language sets. Interface with this when you need to lookup strings, change the language, or add more key/value pairs to the language set.
+* <b>LocalizedText</b>: A component that you should attach to existing Text components. These are supplied a string key to display. In addition, they automatically register themselves with the LocalizationManager and are automatically told to update their contents when the language changes.
+
+Okay, there's also a third section that I use personally for QOL, but isn't core to the library:
 
 ### The Bonus Third Section: Misc
 
-* Singleton
-* Ordered Initializer
+* <b>Singleton</b>: An all-purpose singleton implementation for Unity. You certainly don't need this for the library to function, though I find it helpful. The LocalizationManager extends this class.
+* <b>Ordered Initializer</b>: The progenitor of the Singleton implementation, this class lets you initialize your singletons in a particular order, and fires a callback on each of them when they finish initialization. Again, not needed, but I find it handy
+
+## Additional References
+
+### Arabic/Right-To-Left Fixup
+
+Unity is bad at right-to-left text display. Fortunately, this is a problem someone way more qualified than me has solved. 
+
+I recommend checking out the OSS plugin: https://github.com/Konash/arabic-support-unity
