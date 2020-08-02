@@ -1,0 +1,4 @@
+language,English,Italiano,
+greeting,"Hello, %player_name!", "Ciao, %player_name!",
+input_player_name,"What is your name?", "Come ti chiami?",
+
